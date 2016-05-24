@@ -1,0 +1,410 @@
+2015년 05월 20일
+memcached -> arcus/redis -> nBase-arc
+
+
+네트워크 -> 웹(초,중) / MMORPG(고) / KAKAO(초,중)
+    보안(고)
+
+    OSI 7 Layer 설명
+    왜 레이어를 나누나?
+    Problem Solving (Divide & Conquer => MECE)
+
+    Reference Model
+    L1/L2/L3/L4/L5/L6/L7
+
+    Layer 1: 디지털 데이터를 상대방에게 정확하게 전달하는 기술
+
+
+
+
+    L1 -> 비트 “0->0” , “1->1”
+    Digital -> Analog -> Analog -> Digital
+
+    4개 소리 / 전압 / 주파수 / 빛
+
+    Attenuation(열화) 고주파수/저주파수
+
+    bit/byte/frame(packet)
+
+    SNR(Signal to Noise Ratio) S/N
+
+    cf. transistor: selector / amplifier
+
+    고유저항(초전도체)
+
+    상호유도 / 잡음(crosstalk) -> Shielding(차폐) -> coaxial cable
+
+    Unshielded twisted pair(UTP)
+
+    LAN(수 백m 정도)
+
+    L2(Ethernet) 최대 150m x 3 => 450m (repeater/digital amp)
+
+    5V -> 200m -> 4V(3V->1) / 0V -> 0
+
+    RJ-11(전화선 잭) / RJ-45(랜선)
+
+    125Mbps
+
+    Ethernet(10Mbps) Fast Ethernet(100Mbps) Gigabit Ethernet 10G
+    Cat5 / Cat5E / Cat6
+
+    Optical Fiber(광케이블)
+    전반사현상 이용
+    WDM (Wavelength Division Multiplexing)
+        Single Mode Fiber / Multi Mode Fiber
+
+        40Gbps -> (OC-768)
+
+    Intergrated Service(Video+Telephone+Data)
+
+    T1(1.544Mbps) / E1(2.048Mbps) / E3(45Mbps) 
+
+    **Telephone 1회선(64kbps) B채널 -> 8kbps(무선)
+
+    OC-1(E3)
+    OC-3(155Mbps)
+    OC-12(622Mbps)
+    OC-48(2.5Gbps)
+    OC-192(10Gbps)
+    OC-768(40Gbps)
+
+
+    DAS/NAS/SAN
+    Direct Attached Storage(USB3.0/IEEE1394)
+    Network AS(Cat6 Drive)
+
+    (1/X/0)->3 state system
+    Transmission Error(전송에러)
+
+    Layer 2: Share MAC(Media Access Control) -> LAN
+    Broadcast(LAN) / Multicast / Unicast(Internet)
+    TDMA vs. CSMA/CD(Ethernet:Xerox)
+
+    cf.CSMA/CA(WIFI)
+
+    cf. Round-Robin
+
+    1Mbps(128KB/s)
+
+    CDMA (Code Division Multiplexing) -> Qualcomm
+    DSSS(Direct Spread Spectrum)
+
+    CSMA(Carrier Sense Multiple Access)
+    Listen before Talk(Transmission)
+
+
+    Bridge(Tapping)
+
+    Listen before transmission
+
+    O
+    XO
+    XXO
+    XXXO
+    XXXXO
+    XXXXXO
+    XXXXXXO
+    XXXXXXXO
+    전송보장(X:CSMA/CD) vs TDMA(O:TDMA)
+    http://nenunena.tistory.com/67
+
+    라운드 마다 정렬 (!!)  10배 처리 -> 30배 처리 성능이 높은것
+
+    Scalability(고속, 대형화) -> CSMA/CD 가능
+    CSMA: O(1)
+    TDMA: O(NlogN)
+
+    1KB -> 2원(핸드폰)
+    512B->9원
+
+    기능 단순화
+     
+    CA(voidance)
+    Free(x) collision-free(x)
+
+    100Mbps(Max)
+    TDMA(O) CSMA(X)
+
+    Subnetting/Supernetting
+    cf.Partition in DBMS
+    
+    2016년 05월 23일
+    LAN / WAN /MAN / VAN
+    Ethernet (Broadcast)
+
+    CSMA/CD vs. CSMA / CA
+
+    무선망 Cellular 
+
+    ISM band(Industrial/Scientific/Medical)
+
+    900Mhz -> 2.4GHz -> 5GHz -> 17GHz
+
+    cf. Hidden Terminal Problem -> RTS(Request To Send) / CTS(Commit To Send)
+
+    CA(Avoidance) - IFS -> 전송률 떨어짐, 충돌의 횟수도 같이 하락
+
+    Ethernet(ieee 802.3)
+    WIFI(ieee 802.11)
+    PAN(Personal Area Network) (802.15)
+
+    MIMO / Channel Bonding
+
+    Layer3:
+    Inter-networking(LAN)-> Internet
+    서로 다른 MAC을 가지는 LAN 간의 데이터 전송
+
+    Addressing (주소체계) -> IP Address(IPv4 -> v6)
+    Public IP / Private IP
+
+    라우터(Router)
+
+    ARP(Address Resolution Protocol) cf.Reverse ARP(RARP()
+            IP주소 -> Ethernet주소 (MAC address)
+            cf. ARP cache
+
+            Broadcast in Ethernet
+
+            같은 LAN에 존재하는 목적지라면 ARP통해 직접 전달 가능
+
+            목적지가 동일 LAN에 존재하는가? (Subnet 마스크랑 목적지랑 IP랑 AND 시켜 자신의 값과 동일여 부확인)
+
+            같은 LAN에 존재하는 목적지라면 ARP통해 직접 전달 가능
+            다른 LAN에 존재한다면 라우터(Router)에게 보내
+            a & 1 = a(통과/항등원)
+            a & 0 = 0(삭제)
+
+            255.255.255.0 = 1111…(24)   0 (8)
+
+            24/8 -> 25/7 -> 26/6
+            255.255.255.128  255.255.255.192
+
+            Repeater(L1) / Switch(L2) / Router(L3) / Gateway(L7)
+
+    Network Mask
+    Subnet Mask(0의 개수가 LAN의 사이즈 표현)
+
+    NIC(Network Interface Card)
+    IP를 네트워크 카드마다 하나씩 할당
+
+    라우터의 요건
+    여러개의 NIC를 가짐
+    각각 네트워크의 접속이 되어 있음
+    IP를 여러 개를 가짐
+
+    맵(MAP) -> Routing Table
+
+    전화 (나를 따라오세요)
+    모든 갈림길 : 홉(Hop) 마다
+
+    라우터
+    한 번씩만 다음 홉으로 가는 길만 알려줌 (Packet by Packet / Hop by Hop Routing)
+
+    목적지가 속한 LAN의 라우터까지 전달 -> ARP
+
+    패킷(Packet)
+    1KB남짓
+
+    목적지가 속한 LAN의 라우터까지 전달 -> ARP
+
+    라우터가 구조가 간단해짐
+
+
+    Packet Loss + Out of Order Delivery 발생 -> TCP에서 해결
+    Transmission error(checksum/parity) -> Drop
+    TTL(Time-to-live) Routing Loop (초-”분"-시간)
+    Traffic jam = Congestion error “Drop” - Tail Drop -> Network 이 끊어짐 (수 초)
+
+    L3: 목적지까지 데이터를 전달(보장?)
+    “ Best Effort”
+    Layer 4 :  
+
+    TCP :  <-> UDP
+        Sequence Number(일련번호)
+        판단 -> Restransmission + Reordering
+            제대로 전송이 다 되었음
+            TCP “Reliability(신뢰성)”
+
+            TCP/IP 목적지까지 데이터를 전송(IP)을  보장(TCP)합니다.
+
+            cf. 3 way handshake
+            Connection-oriented/less
+            cf. Encapsulation in Network
+            cf. port
+            cf. ack-based(synchronized/asynchronized:H/W)
+
+    packet 1 →  
+        ←  ack 1
+        packet 2 -> 
+            ← ack 2
+            packet 3 →  
+                ←  ack 3
+
+                100Mbps, RTT(Tound Trip Time) 0.01s, packet 1KB
+                최대 전송 속도 = ?
+                100KB/s
+                cf. MTU(maximum transmission unit)
+
+    외장(ack)
+    5개(한 번에 ACK없이 5개까지 패킷을 전송할 수 있음)
+
+    Cumulative ACK/Selective ACK
+    ACK 5
+
+    GPS →  12개 →  최대 3(2D) , 4(3D)
+    GMT시간(NMEA format, A-GPS)
+    오차 2m →  10m
+
+    유럽: Galieo GPS
+
+    동기식/비동기식 CDMA
+
+    1개만 전송해봐 → Ack
+    2개 → ACK
+    4개 → ACK
+    8개 → ACK
+    64개 → ACK
+
+    Congestion Avoidance(혼잡회피) | AIMD(Additive Increase Multiplicative Decrease) flow control
+    65개
+    66개
+    67개
+    100패 → 패킷손실
+    50개
+    51개
+    52개
+
+
+
+
+    TCP → 패킷로스의 원인(자기때문)
+    TCP가 많으면
+    congestion → duration(기간) 짧음
+
+    TCP 모범시민
+    UDP 불량시민
+
+    UDP
+    TCP가 마음에 안들경우 UDP에 1+2기능을 구현해야 함
+
+    TCP/IP →  전송(재전송/재조립) →  “보낸대로 간다"
+    UDP/IP → “보장이 없음" → 보장이 필요하면 직접 짜야함 (+오락,멀티미디어)
+
+    UDP → 초급은 쓰기 힘듬
+
+    Layer 7 Application Protocol(응용프로토콜)
+
+    Telnet/FTP/SSH/HTTP/…
+
+    HTTP+HTML
+    HTTP Daemon(웹서버)
+    send/receive 가 보장됨 (UDP는 보장이 안됨)
+    2016년 05월 24일
+    UDP가 유리한 경우
+    retransmission 적당히 데이터가 손실이 나도 무방한 경우
+    reordering 패킷 하나짜리 프로토콜, 랜에서만 동작하는 경우
+    error control 비디오/오디오 계단식 속도제어 →  버퍼링
+    최적화를 원할 때
+
+    3 way handshake → Connection-oriented/connectionless
+    connection-setup 후 데이터를 전송 → connection close
+    양방향 sequence number
+
+    TCP: CO
+    IP: CL
+    UDP:CL
+    전화: CO
+    문자 , 메시지: CL
+
+    Layer 4: Connection
+    cf. port(Layer 4)
+
+    Encapsulation in Network
+    cf. 터널링(Turneling)  | VPN(Virtual Private Network)
+
+
+
+
+    cf. hop by hop(IP), TCP(end-to-end)
+    Layer 5 (Session)
+    물리적으로 여러 개를 묶어서 하나의 논리적 단위(세션)으로 관리하는 경우
+
+        비디오(1000)+오디오(1001)+텍스트(1002)
+        시간적으로 동시에 여러 개의 커넥션을 만드는 경우
+            시간적으로 다른 여러 개의 커넥션을 하나의 세션으로 설명하는 경우(웹 세션 트래킹)
+
+    Layer 6 (Presentation)
+    Network Byte Ordering
+    192.168.0.1 → 메모리에 저장(Big Endian/Little Endian)
+    ARM → Bi-endian
+
+    표준 “Big endian”
+    IP주소(4바이트), 포트(2바이트)
+    htonl, htons ntohl, ntohs
+
+    정수/실수/문자열 표현법
+
+    XML, JSON
+
+    Layer 7 Application Protocol(응용 프로토콜)
+    메시지순서(sequence)+메시지형식(format)
+
+    echo / ping / Telent / FTP / SSH / ”HTTP” /…
+    cf.표준(statndard)
+
+    HTTP
+    파일 전송 프로토콜
+
+
+    telnet kitri.re.kr 80
+    GET / HTTP/1.0
+    밑에 있는 기본 파일을 넘겨줘 (apache: index.html, iis:default.htm)
+
+
+    POST
+
+    HTTP/0.9→ 1.0 → 1.1 → 2.0
+
+    HTTP/1.1 200 OK
+    Date: Tue, 24 May 2016 02:16:48 GMT
+    Server: Apache/2.2.15 (CentOS)
+    Accept-Ranges: bytes
+    ETag: W/"717-1423546509000"
+    Last-Modified: Tue, 10 Feb 2015 05:35:09 GMT
+    Content-Length: 717
+    Connection: close
+    Content-Type: text/html; charset=UTF-8
+    HTTP 응답코드
+    200 → OK
+    302 →
+    400 →
+    500 →
+
+    전송받고 나서 → 파일의 내용을 해석 (파싱,파서,parsher)
+    → 렌더링(render)
+
+    압축  vs 암호화
+    → 허프만코딩
+
+
+
+    HTTP
+    파일 전송 프로토콜 + Alpha(타입에 맞는 추가처리)
+    텍스트기반 cf.바이너리 기반(TCP/IP)
+    파일단위 전송
+
+
+
+    192.168.0.18 (4 → 12)
+
+    1 page / 85 files / 85 connections
+
+    85% → TCP(80-90:HTTP)
+
+    웹의 문제점
+    성능
+    보안
+    세션
+
+
