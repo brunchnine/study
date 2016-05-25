@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-class NetworkEx1 {
+class NetworkEx4 {
         public static void main(String[] args){
                 String address = "http://naver.com:80/a/b.html";
                 
