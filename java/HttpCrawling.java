@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -48,6 +47,22 @@ public class HttpCrawling {
     System.out.println(getPortSub);
     System.out.println(getPathSub);
     체크 끝 */ 
+        
+        
+        /*HTTP/1.0 200 OK
+Content-Type: image/png
+Content-Length: 36907
+Connection: keep-alive
+Server: nginx
+Date: Wed, 07 Nov 2012 00:44:47 GMT
+X-Whom: l3-com-cyber
+Cache-Control: public, max-age=432000000
+Expires: Fri, 17 Jul 2026 00:44:46 GMT
+Accept-Ranges: bytes
+ETag: "278099835"
+Last-Modified: Mon, 05 Nov 2012 23:06:34 GMT
+Age: 298127
+         */
     
     try{
           
@@ -69,7 +84,7 @@ public class HttpCrawling {
                       
                 //String line = null;
                 String cm="\r\n\r\n\r\n";
-                String getting= "GET/HTTP/1.1"+cm; //+getPathSub+
+                String getting= "GET / HTTP / 1.1"+cm; //+getPathSub+
                
                pw.write(getting);
                  pw.flush();
