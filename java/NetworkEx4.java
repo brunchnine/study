@@ -7,8 +7,9 @@ class NetworkEx4 {
                 String address = "http://naver.com:80/a/b.html";
                 
                 // 변수 address 에서 :값의 인덱스값을 hsEnd 에 넣
+	String sl = "/";
                int hsEnd = address.lastIndexOf(":"); //포트시작 index num
-               int hsSrt = address.indexOf("//");
+               int hsSrt = address.indexOf(sl+sl);
                
                String getHostN = address.substring(hsSrt+2,hsEnd); //getHost 가져오기 
                String getPortN = address.substring(hsEnd+1,hsEnd+3); // 임시..ㅠㅠ
@@ -17,55 +18,52 @@ class NetworkEx4 {
              
                 
                 
-                try{
-                		URL url = new URL(address);
-                		String host = url.getHost();
-                        String path = url.getPath();
-                        int port = url.getDefaultPort();
+          try{
+       		URL url = new URL(address);
+       		String host = url.getHost();
+                String path = url.getPath();
+                int port = url.getDefaultPort();
                     
-                        System.out.println(host+"");
-                        System.out.println(getHostN+"  <--substring 으로 가져온것");
-						System.out.println(path+"");
-						System.out.println(getPathN+"  <-- substring으로 가져온 ");
-						System.out.println(port+"");
-						System.out.println(getPortN+"  <-- substring으로 가져온 ");
+                System.out.println(host+"");
+                System.out.println(getHostN+"  <--substring 으로 가져온것");
+		System.out.println(path+"");
+		System.out.println(getPathN+"  <-- substring으로 가져온 ");
+		System.out.println(port+"");
+		System.out.println(getPortN+"  <-- substring으로 가져온 ");
 						
 						
-						// 소켓 생성 연결 요청
-                        Socket socket = new Socket(host, port);
-                        InetAddress inetaddr = socket.getInetAddress();
-                        
-                        //접속표시
-                       System.out.println("호스트IP:"+inetaddr.getHostAddress());
-                        
-                        // 반환받은 socket으로부터 inputStream과 OutputStream을 구
-                       OutputStream out = socket.getOutputStream();
-                       InputStream in = socket.getInputStream();
+		// 소켓 생성 연결 요청
+                Socket socket = new Socket(host, port);
+                InetAddress inetaddr = socket.getInetAddress();
                        
-                       // InputStreamdms 을 BufferedReader 형식으로 변환
-                       //OutputStream은Writer형식으로 변환
-                      PrintWriter pw = new PrintWriter(new OutputStreamWriter(out));
-                      BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                //접속표시
+                System.out.println("호스트IP:"+inetaddr.getHostAddress());
+                        
+                // 반환받은 socket으로부터 inputStream과 OutputStream을 구
+                OutputStream out = socket.getOutputStream();
+                InputStream in = socket.getInputStream();
+                       
+                // InputStreamdms 을 BufferedReader 형식으로 변환
+                //OutputStream은Writer형식으로 변환
+                PrintWriter pw = new PrintWriter(new OutputStreamWriter(out));
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
                       
-                    //String line = null;
-                      String cm="\r\n\r\n\r\n";
-                      String getting= "GET/HTTP/1.1"+path+cm;
+                //String line = null;
+                String cm="\r\n\r\n\r\n";
+                String getting= "GET/HTTP/1.1"+path+cm;
                
             	 pw.write(getting);
               	 pw.flush();
                
                     	 
-                         String line;
-                         while((line = br.readLine()) !=null){
-                        	 System.out.println(line);
-                         }
-                    	
-                     
-                                     
-                       //IO객체와 소켓의 close() 메소드 호출
-                      pw.close();
-                      br.close();
-                      socket.close();
+                 String line;
+                 while((line = br.readLine()) !=null){
+              	 System.out.println(line);
+                 }
+                 //IO객체와 소켓의 close() 메소드 호출
+                 pw.close();
+                 br.close();
+                 socket.close();
 
                 } catch (ConnectException ce){
                         ce.printStackTrace();
