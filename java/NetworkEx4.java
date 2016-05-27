@@ -1,19 +1,26 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.lang.*;
 
 class NetworkEx4 {
         public static void main(String[] args){
                 String address = "http://naver.com:80/a/b.html";
+		boolean prot = address.startsWith("http://");
+		String address1=""; 
+		if(prot){
+			address1 = address.replaceFirst("http://","");
+		}
+		System.out.println(address1+"");
+
                 
                 // 변수 address 에서 :값의 인덱스값을 hsEnd 에 넣
-	String sl = "/";
-               int hsEnd = address.lastIndexOf(":"); //포트시작 index num
-               int hsSrt = address.indexOf(sl+sl);
+               int hsEnd = address1.lastIndexOf(":"); //host 끝 |port 시작 index num
+               int hsSrt = address1.indexOf("/"); // port 끝 Path 시작
                
-               String getHostN = address.substring(hsSrt+2,hsEnd); //getHost 가져오기 
-               String getPortN = address.substring(hsEnd+1,hsEnd+3); // 임시..ㅠㅠ
-               String getPathN = address.substring(hsEnd+3,address.length());
+               String getHostN = address1.substring(0,hsEnd); //getHost 가져오기 
+               String getPortN = address1.substring(hsEnd+1,hsSrt); // port 가져오기
+               String getPathN = address1.substring(hsSrt,address1.length());
                // str.substring(str.indexOf("-"),str.lastIndexOf("-")) -> 07
              
                 

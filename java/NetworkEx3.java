@@ -5,6 +5,9 @@ import java.util.*;
 class NetworkEx3 {
         public static void main(String[] args){
                 String address = "http://naver.com:8080/a/b.html";
+
+		boolean pr = address.starWith("http://");
+		System.out.println(pr);
                 
                 // 변수 address 에서 :값의 인덱스값을 hsEnd 에 넣
                int hsEnd = address.lastIndexOf(":"); //포트시작 index num

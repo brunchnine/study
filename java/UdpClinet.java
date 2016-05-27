@@ -12,15 +12,8 @@ public class UdpClient {
 		// 데이터가 저장될 공간으로 byte배열을 생성한다.
 		byte[] msg = new byte[100];
 
-		for(i=0; i<=99; i++){
-			msg.add = i%2;
-
-		}
-
-		// byte 에 0101 루프 돌려서 저장하고 날리면 되는겨?
-		
-
-		DatagramPacket outPacket = new DatagramPacket (msg, 1, serverAddress, 7777);
+		DatagramPacket outPacket =
+			new DatagramPacket (msg, 1, serverAddress, 7777);
 		DatagramPacket inPacket = new DatagramPacket (msg,msg.length);
 
 		datagramSocket.send(outPacket); //DatagramPAcket 을 전송
