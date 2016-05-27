@@ -1,0 +1,14 @@
+/* Ex1 sample css */
+h1 {
+    color:orange;}
+
+p {
+    color: #343534;}
+
+table {
+    border-collapse: collapse;}
+
+table, td, tr {
+    border:1px solid black;}
+ul, ol, li {
+     color:blue; }
