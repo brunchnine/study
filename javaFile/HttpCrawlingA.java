@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.*;
 import java.io.*;
 
-public class HttpCrawling_1{
+public class HttpCrawlingA{
   private static Scanner sc;
   public static void main(String[] args){
     
