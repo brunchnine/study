@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dddM</title>
+</head>
+
+<script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("test1").text(function(i, origText){
+                    return "Old text: " + origText + "New Text: Hello world! (index:"+i+")";
+                    });
+                });
+            });
+</script>
+
+<body>
+
+<p id ="test1">This is a <b>bold</b> paragraph.</p>
+<p id="test2">This is anoter<b>bold</b>para...</p>
+
+<button id="btn1">Show Old/New Text</button>
+<button id="btn2">Show Old/NEw HTML</button>
+
+</body>
+</html>

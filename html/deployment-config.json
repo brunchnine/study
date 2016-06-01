@@ -1,0 +1,9 @@
+{
+    "type": "sftp",
+    "host": "92.168.25.80",
+    "username": "jjmstars",
+    "password": "123",
+    "port": 22,
+    "remotePath": "",
+    "uploadOnSave": false
+}

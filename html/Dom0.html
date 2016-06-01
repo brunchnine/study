@@ -1,0 +1,34 @@
+<!DOCYTPE html>
+<html>
+  <body>
+    <div id="div1">
+
+      <script>
+        var div1 = document.createElemnt("div");
+        div1.setAtribute("id", "div1");
+      var head1 = document.createElement("h1");
+      var para1 = document.createElement("p");
+
+      var para2 = document.createElement("p");
+
+      var pnode1 = document.createTextNode("This is Head1");
+      var pnode2 = document.createTextNode("this is p1");
+      var pnode3 = document.createTextNode("this is p2");
+
+      head1.appendChild(pnode1);
+      para1.appendChild(pnode2);
+      para2.appendChild(pnode3);
+
+
+
+      var element1 = document.getElementById("div1");
+      element1.appendChild(head1);
+      element1.appendChild(para1);
+        element1.appendChild(para2);
+
+
+
+  </script>
+</div>
+</body>
+</html>
